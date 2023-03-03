@@ -13,7 +13,7 @@ Template Name: Quản Lý
     else{
         echo '<div class="notice-ql"><h3>Quyền quản lý mới được truy cập trang này</h3>';
         echo 'Vui lòng đăng nhập ';
-        echo '<a href="/login">tại đây</a>';
+        echo '<a href="/login">tại đây........</a>';
         echo '</div>';
     }
 
