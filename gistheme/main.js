@@ -98,10 +98,60 @@ var layer_ranhGioiTinh = new ol.layer.Tile({
       },
    }),
 });
+var layer_ranhGioiHuyen = new ol.layer.Tile({
+   title: "Ranh giới huyện",
+   visible: true,
+   displayInLayerSwitcher: true,
+   source: new ol.source.TileWMS({
+      url: "https://satlokhanhhoa.com/geoserver/WebGIS_NhaTrang/wms",
+      projection: new ol.proj.Projection({
+         code: "EPSG:4326",
+         units: "degrees",
+         //axisOrientation: "neu",
+         //global: true
+      }),
+      //layer: "WebGIS_NhaTrang:calculatedMap",
+      params: {
+         FORMAT: "image/png",
+         VERSION: "1.1.1",
+         tiled: true,
+         STYLES: "WebGIS_NhaTrang:style_hanhChinhHuyen",
+         LAYERS: "WebGIS_NhaTrang:hanhChinhHuyen",
+         exceptions: "application/vnd.ogc.se_inimage",
+         //FORMAT_OPTIONS: "antialias:none",
+         //tilesOrigin: 545198.8585090899 + "," + 1305590.739236221,
+      },
+   }),
+});
+var layer_ranhGioiXa = new ol.layer.Tile({
+   title: "Ranh giới tỉnh",
+   visible: true,
+   displayInLayerSwitcher: true,
+   source: new ol.source.TileWMS({
+      url: "https://satlokhanhhoa.com/geoserver/WebGIS_NhaTrang/wms",
+      projection: new ol.proj.Projection({
+         code: "EPSG:4326",
+         units: "degrees",
+         //axisOrientation: "neu",
+         //global: true
+      }),
+      //layer: "WebGIS_NhaTrang:calculatedMap",
+      params: {
+         FORMAT: "image/png",
+         VERSION: "1.1.1",
+         tiled: true,
+         STYLES: "WebGIS_NhaTrang:style_hanhChinhXa",
+         LAYERS: "WebGIS_NhaTrang:hanhChinhXa",
+         exceptions: "application/vnd.ogc.se_inimage",
+         //FORMAT_OPTIONS: "antialias:none",
+         //tilesOrigin: 545198.8585090899 + "," + 1305590.739236221,
+      },
+   }),
+});
 var layerGroup_hanhChinh = new ol.layer.Group({
    title: "Hành chính",
    openInLayerSwitcher: true,
-   layers: [layer_ranhGioiTinh],
+   layers: [layer_ranhGioiTinh, layer_ranhGioiHuyen, layer_ranhGioiXa],
 });
 ///////////////////////////////////////////////////////////
 //Basemap switcher
