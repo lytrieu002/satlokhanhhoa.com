@@ -82,7 +82,7 @@ var layer_ranhGioiTinh = new ol.layer.Tile({
       projection: new ol.proj.Projection({
          code: "EPSG:4326",
          units: "degrees",
-         axisOrientation: "neu",
+         //axisOrientation: "neu",
          //global: true
       }),
       //layer: "WebGIS_NhaTrang:calculatedMap",
