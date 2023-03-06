@@ -52,13 +52,14 @@ var baseLayers = new ol.layer.Group({
    openInLayerSwitcher: true,
    layers: [osmBaseMap, googleBaseMap],
 });
+
 var layer_CapDoRuiRo = new ol.layer.Tile({
    title: "Bản đồ cấp độ rủi ro",
    visible: true,
    displayInLayerSwitcher: true,
    source: new ol.source.TileWMS({
       url: "https://satlokhanhhoa.com/geoserver/WebGIS_NhaTrang/wms",
-      layer: "WebGIS_NhaTrang:calculatedMap",
+      //layer: "WebGIS_NhaTrang:calculatedMap",
       params: {
          FORMAT: "image/png",
          VERSION: "1.1.1",
@@ -72,6 +73,30 @@ var layer_CapDoRuiRo = new ol.layer.Tile({
    }),
 });
 
+var layer_ranhGioiTinh = new ol.layer.Tile({
+   title: "Ranh giới tỉnh",
+   visible: true,
+   displayInLayerSwitcher: true,
+   source: new ol.source.TileWMS({
+      url: "https://satlokhanhhoa.com/geoserver/WebGIS_NhaTrang/wms",
+      //layer: "WebGIS_NhaTrang:calculatedMap",
+      params: {
+         FORMAT: "image/png",
+         VERSION: "1.1.1",
+         tiled: true,
+         STYLES: "WebGIS_NhaTrang:style_hanhChinhTinh",
+         LAYERS: "WebGIS_NhaTrang:hanhChinhTinh",
+         exceptions: "application/vnd.ogc.se_inimage",
+         //FORMAT_OPTIONS: "antialias:none",
+         //tilesOrigin: 545198.8585090899 + "," + 1305590.739236221,
+      },
+   }),
+});
+var layerGroup_hanhChinh = new ol.layer.Group({
+   title: "Hành chính",
+   openInLayerSwitcher: true,
+   layers: [layer_ranhGioiTinh],
+});
 ///////////////////////////////////////////////////////////
 //Basemap switcher
 var layerSwitcher = new ol.control.LayerSwitcher({
@@ -180,7 +205,7 @@ var map = new ol.Map({
       altShiftDragRotate: false,
       pinchRotate: false,
    }),
-   layers: [baseLayers, layer_CapDoRuiRo],
+   layers: [baseLayers, layerGroup_hanhChinh, layer_CapDoRuiRo],
    controls: ol.control.defaults().extend([new ol.control.ZoomSlider(), mousePositionControl, layerSwitcher]),
    view: view,
 });
