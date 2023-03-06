@@ -79,6 +79,12 @@ var layer_ranhGioiTinh = new ol.layer.Tile({
    displayInLayerSwitcher: true,
    source: new ol.source.TileWMS({
       url: "https://satlokhanhhoa.com/geoserver/WebGIS_NhaTrang/wms",
+      projection: new ol.proj.Projection({
+         code: "EPSG:4326",
+         units: "degrees",
+         axisOrientation: "neu",
+         //global: true
+      }),
       //layer: "WebGIS_NhaTrang:calculatedMap",
       params: {
          FORMAT: "image/png",
